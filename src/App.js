@@ -5,7 +5,6 @@ import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
 
-
 // prop = {value}
 const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -32,5 +31,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default  App;
