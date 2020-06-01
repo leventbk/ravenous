@@ -1,27 +1,27 @@
-const apiKey = 'enter api key';
+const apiKey = 'key';
 
-const yelp = {
-    search(term, location, sortBy) {
+const Yelp = {
+    searchYelp(term, location, sortBy) {
         //bypass CORS restriction via cors-anywhere
         return fetch(
             `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, 
-            {headers: {Authorization: `Bearer ${apiKey}`}}
+            {headers: {Authorization: `Bearer ${apiKey}`,},}
         ).then(response => {
             return response.json();
-        }).then(jsonResponse => {
+        }).then((jsonResponse) => {
             if(jsonResponse.businesses){
-                return jsonResponse.businesses.map(((businesses) => {
-                    console.log(bunsiness);
+                return jsonResponse.businesses.map(((business) => {
+                    console.log(business);
                     return {
-                        id: businesses.id,
-                        imageSrc: businesses.image_url,
-                        address: businesses.location.address,
-                        city: businesses.location.city,
-                        state: businesses.location.state,
-                        zipCode: businesses.location.zip_code,
-                        category: businesses.category[0].title,
-                        rating: businesses.rating,
-                        reviewCount: businesses.review_count,
+                        id: business.id,
+                        imageSrc: business.image_url,
+                        address: business.location.address1,
+                        city: business.location.city,
+                        state: business.location.state,
+                        zipCode: business.location.zip_code,
+                        category: business.category[0].title,
+                        rating: business.rating,
+                        reviewCount: business.review_count,
                     };    
                 }));
             }
